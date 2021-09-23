@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import ChamadoCard from '../ChamadoCard'
 import Header from '../Header'
 import Loading from '../Loading'
+import ChamadosTable from '../ChamadosTable'
 
 import * as S from './styles'
 
@@ -37,6 +38,7 @@ const Chamados = () => {
                 <Header/>
                 <S.Wrapper>
                     {chamados.map((ticket, key)=>{return <ChamadoCard key={key} ticket={ticket} />})}
+                    <ChamadosTable chamados={chamados}/>
                 </S.Wrapper>
             </> }
            
