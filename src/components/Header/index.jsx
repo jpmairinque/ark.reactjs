@@ -40,8 +40,9 @@ const Header = () => {
                     <span class="compId">({moreEquipId})</span>
                 </section>
             </S.MoreBox>
+            <h2>Adicionar chamado</h2>
             <S.MoreBox>
-               
+                    
                     <h1>{moreChamQuant}</h1> 
                     <section>
                         <span class="uptext">Equipamento com mais chamados: </span>

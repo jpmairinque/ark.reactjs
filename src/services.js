@@ -56,3 +56,21 @@ export const getMoreChamados = async () => {
 
   return [moreChamadosEquip, biggestLength];
 };
+
+
+
+
+
+// data = {
+//   "equipamento": equipment['id'],
+//   "solicitante": equipment['proprietario']['id'], 
+//   "tipo_servico": 3, 
+//   "problema": 5,
+//   "observacoes": "texto gerado aleatoriamente com até 100 palavras", 
+//   "data_criacao": nowStamp, 
+//   "id_tipo_ordem_servico": 1
+// }
+// res = requests.request('POST',
+//                      f"{self.baseApiEndpoint}/api/v1/chamado/novo/",
+//                      headers=self.header,
+//                      data=data).json()

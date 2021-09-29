@@ -1,10 +1,10 @@
 import React from 'react'
 import { getChamados } from '../../services'
 import { useState, useEffect } from 'react'
-import ChamadoCard from '../ChamadoCard'
 import Header from '../Header'
 import Loading from '../Loading'
 import ChamadosTable from '../ChamadosTable'
+import AddChamado from '../AddChamado'
 
 import * as S from './styles'
 
@@ -33,14 +33,14 @@ const Chamados = () => {
     return (
         
         <>
-            {loading ? <Loading/> : 
+            <AddChamado/>
+            {/* {loading ? <Loading/> : 
             <>
                 <Header/>
                 <S.Wrapper>
-                    {chamados.map((ticket, key)=>{return <ChamadoCard key={key} ticket={ticket} />})}
                     <ChamadosTable chamados={chamados}/>
                 </S.Wrapper>
-            </> }
+            </> } */}
            
         </>
     )

@@ -1,17 +1,22 @@
 import React from 'react'
 import Row from './Row'
+import * as S from './styles'
 
 const ChamadosTable = ({chamados}) => {
     return (
-        <table>
-            <tr>
-                <td>Id</td>
-                <td>Equipamento</td>
-                <td>NumeroCh</td>
-                <td>Proprietário</td>
-            </tr>
+        <S.Table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Equipamento</th>
+                    <th>NumeroCh</th>
+                    <th>Proprietário</th>
+                </tr>
+            </thead>
+            <tbody>
             {chamados.map((ticket, key)=>{return <Row ticket={ticket}/>})}
-        </table>
+            </tbody>
+        </S.Table>
     )
 }
 
