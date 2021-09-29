@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
 import * as S from './styles'
+import {postChamado} from '../../services'
 
 const AddChamado = () => {
 
     const currentTimestamp = new Date().getTime()
 
     const [chamadoData, setChamadoData] = useState({
-        equipamento: "",
-        solicitante: "",
+        equipamento: 0,
+        solicitante: 0,
         tipo_servico: 3,
         problema: 5,
         observacoes: "texto gerado aleatoriamente com até 100 palavras", 
         data_criacao: currentTimestamp, 
         id_tipo_ordem_servico: 1
     })
+
+    const handleSubmit = async() => {
+        await postChamado(chamadoData)
+    }
 
     const handleInputChange = (e,property) => { 
 
@@ -24,8 +29,8 @@ const AddChamado = () => {
             case "solicitante":
                 setChamadoData({...chamadoData, solicitante:e.target.value})
                 break;
-            case "problema":
-                setChamadoData({...chamadoData, problema:e.target.value})
+            case "observacoes":
+                setChamadoData({...chamadoData, observacoes:e.target.value})
                 break;
             
         }
@@ -37,15 +42,15 @@ const AddChamado = () => {
 
     return (
         <S.Wrapper>
-            <h1>Novo chamado</h1>
+            <h1 onClick={handleSubmit}>Novo chamado</h1>
 
             <S.InputBox>
                 <span>Número do equipamento:</span>
                 <input type="text" onChange={e=>handleInputChange(e,"equipamento")}/>
                 <span>Solicitante:</span>
                 <input type="text" onChange={e=>handleInputChange(e,"solicitante")}/>
-                <span>Problema:</span>
-                <input type="number" onChange={e=>handleInputChange(e,"solicitante")}/>
+                <span>Observações:</span>
+                <input type="text" onChange={e=>handleInputChange(e,"observacoes")}/>
             </S.InputBox>            
         </S.Wrapper>
     )

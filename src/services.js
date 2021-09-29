@@ -57,20 +57,53 @@ export const getMoreChamados = async () => {
   return [moreChamadosEquip, biggestLength];
 };
 
+export const getAuthToken = async() =>{
+
+       const authData = {           
+        email: 'a@a.com',
+        password: 'a'
+      } 
+       const res = await fetch('https://desenvolvimento.arkmeds.com/rest-auth/token-auth/', {
+        method: 'POST',       
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(authData)
+      })
+
+      const data = await res.json()
+      return data.token
+  }
 
 
 
 
-// data = {
-//   "equipamento": equipment['id'],
-//   "solicitante": equipment['proprietario']['id'], 
-//   "tipo_servico": 3, 
-//   "problema": 5,
-//   "observacoes": "texto gerado aleatoriamente com até 100 palavras", 
-//   "data_criacao": nowStamp, 
-//   "id_tipo_ordem_servico": 1
-// }
-// res = requests.request('POST',
-//                      f"{self.baseApiEndpoint}/api/v1/chamado/novo/",
-//                      headers=self.header,
-//                      data=data).json()
+export const postChamado = async (ticket) => {
+
+  const token = await getAuthToken()
+
+  console.log(token)
+
+  const res = await fetch("https://desenvolvimento.arkmeds.com/api/v1/chamado/novo/", {
+    method: 'POST',
+    headers: {
+      'Authorization': `JWT ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(ticket)
+  });
+
+  
+
+  console.log(await res.json())
+
+}
+
+
+
+
+
+
+
