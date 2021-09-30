@@ -9,6 +9,11 @@ export const Nav = styled.nav`
   margin-bottom: 2rem;
   justify-content: space-around;
   display: flex;
+
+  h2{
+    cursor: pointer;
+    color: #4DB5B9;
+  }
 `;
 
 export const MoreBox = styled.div`

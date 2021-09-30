@@ -14,6 +14,7 @@ const Chamados = () => {
 
     const [chamados, setChamados] = useState([])
     const [loading, setLoading] = useState(true)
+    const [chamadoModal, setChamadoModal] = useState(false)
 
     useEffect(() => {
 
@@ -28,21 +29,26 @@ const Chamados = () => {
         fetch()          
        
     }, [])
-
+            
 
     return (
-        
         <>
-            <AddChamado/>
-            {/* {loading ? <Loading/> : 
+        {loading ? <Loading/> : chamadoModal ? <AddChamado setChamadoModal={setChamadoModal}/> :
+        
             <>
-                <Header/>
+                <Header setChamadoModal={setChamadoModal}/>
                 <S.Wrapper>
                     <ChamadosTable chamados={chamados}/>
                 </S.Wrapper>
-            </> } */}
-           
-        </>
+            </>
+        
+        
+        }
+       </>
+        
+        
+        
+
     )
 }
 

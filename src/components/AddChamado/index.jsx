@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as S from './styles'
 import {postChamado} from '../../services'
 
-const AddChamado = () => {
+const AddChamado = ({setChamadoModal}) => {
 
     const currentTimestamp = new Date().getTime()
 
@@ -15,10 +15,18 @@ const AddChamado = () => {
         data_criacao: currentTimestamp, 
         id_tipo_ordem_servico: 1
     })
+    const [error, setError] = useState(false)
+    
 
     const handleSubmit = async() => {
-        await postChamado(chamadoData)
+        const res = await postChamado(chamadoData)
+        
+        console.log(res)
+
+
     }
+
+  
 
     const handleInputChange = (e,property) => { 
 
@@ -42,7 +50,7 @@ const AddChamado = () => {
 
     return (
         <S.Wrapper>
-            <h1 onClick={handleSubmit}>Novo chamado</h1>
+            <h1 >Novo chamado</h1>
 
             <S.InputBox>
                 <span>Número do equipamento:</span>
@@ -51,7 +59,9 @@ const AddChamado = () => {
                 <input type="text" onChange={e=>handleInputChange(e,"solicitante")}/>
                 <span>Observações:</span>
                 <input type="text" onChange={e=>handleInputChange(e,"observacoes")}/>
-            </S.InputBox>            
+            </S.InputBox>      
+            <S.DoneButton onClick={handleSubmit} disabled={error}>Pronto</S.DoneButton>      
+            {error && <S.ErrorMsg>Informaçoẽs inválidas. Certifique a procedência do número do equipamento e do solicitante.</S.ErrorMsg> }  
         </S.Wrapper>
     )
 }

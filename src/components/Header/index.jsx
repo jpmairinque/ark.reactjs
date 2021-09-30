@@ -4,7 +4,7 @@ import { getMoreEquipments, getMoreChamados } from '../../services'
 
 
 
-const Header = () => {
+const Header = ({setChamadoModal}) => {
 
     const [moreEquipId, setMoreEquipId] = useState()
     const [moreEquipQuant, setMoreEquipQuant] = useState()
@@ -36,17 +36,17 @@ const Header = () => {
             <S.MoreBox>
                <h1>{moreEquipQuant}</h1> 
                <section>
-                    <span class="uptext">Proprietario com mais equipamentos:  </span>
-                    <span class="compId">({moreEquipId})</span>
+                    <span className="uptext">Proprietario com mais equipamentos:  </span>
+                    <span className="compId">({moreEquipId})</span>
                 </section>
             </S.MoreBox>
-            <h2>Adicionar chamado</h2>
+            <h2 onClick={()=>{setChamadoModal(true)}}>Adicionar chamado</h2>
             <S.MoreBox>
                     
                     <h1>{moreChamQuant}</h1> 
                     <section>
-                        <span class="uptext">Equipamento com mais chamados: </span>
-                        <span class="compId">{moreChamId}</span>
+                        <span className="uptext">Equipamento com mais chamados: </span>
+                        <span className="compId">{moreChamId}</span>
                     </section>
             </S.MoreBox>
 

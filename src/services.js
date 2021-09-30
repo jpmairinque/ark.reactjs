@@ -95,9 +95,16 @@ export const postChamado = async (ticket) => {
     body: JSON.stringify(ticket)
   });
 
-  
+  try{
 
-  console.log(await res.json())
+  const topRes = await res.json()
+  return true
+
+  } catch {
+    return false
+  }
+  
+  
 
 }
 

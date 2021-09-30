@@ -14,7 +14,7 @@ const ChamadosTable = ({chamados}) => {
                 </tr>
             </thead>
             <tbody>
-            {chamados.map((ticket, key)=>{return <Row ticket={ticket}/>})}
+            {chamados.map((ticket, key)=>{return <Row key={key} ticket={ticket}/>})}
             </tbody>
         </S.Table>
     )
