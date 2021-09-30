@@ -1,4 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideAnimation = keyframes`
+
+0% {
+  -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+    
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    
+  }
+
+
+`
+
 
 export const Wrapper = styled.div`
   width: 600px;
@@ -14,6 +31,9 @@ export const Wrapper = styled.div`
     text-align: center;
     margin-bottom: 2rem;
   }
+  animation: ${slideAnimation} 0.3s;
+
+  
 `;
 
 export const InputBox = styled.div`
@@ -36,6 +56,7 @@ export const InputBox = styled.div`
   }
 `;
 
+
 export const DoneButton = styled.button`
   font-family: "Montserrat";
   width: 200px;
@@ -48,6 +69,7 @@ export const DoneButton = styled.button`
   font-size: 1.5rem;
   cursor: pointer;
     align-self: center;
+    margin-bottom: 15px;
 
   &:hover {
     background-color: #4db5b99b;
@@ -56,9 +78,11 @@ export const DoneButton = styled.button`
 
 export const ErrorMsg = styled.span`
   
-  color: red;
+  color: ${props => props.success ? "green" : "red"};
   border-radius: 50px;
   font-size: 15px;
   text-align: center;
   margin-top: 2rem;
+  
 `;
+

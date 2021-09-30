@@ -98,10 +98,10 @@ export const postChamado = async (ticket) => {
   try{
 
   const topRes = await res.json()
-  return true
+  return {result: false, msg: "Chamado enviado com sucesso!"}
 
   } catch {
-    return false
+    return {result: true, msg: "Informaçoẽs inválidas. Certifique a procedência do número do equipamento e do solicitante."}
   }
   
   

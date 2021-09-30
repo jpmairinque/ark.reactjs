@@ -5,7 +5,6 @@ export const Nav = styled.nav`
   height: 100px;
   width: 90%;
   margin: 0 auto;
-
   margin-bottom: 2rem;
   justify-content: space-around;
   display: flex;
@@ -13,6 +12,7 @@ export const Nav = styled.nav`
   h2{
     cursor: pointer;
     color: #4DB5B9;
+    margin-top: 3rem;
   }
 `;
 
