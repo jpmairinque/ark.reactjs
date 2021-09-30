@@ -15,17 +15,14 @@ const AddChamado = ({setChamadoModal}) => {
         data_criacao: currentTimestamp, 
         id_tipo_ordem_servico: 1
     })
-    const [error, setError] = useState(false)
+    const [res, setRes] = useState(false)
+
     
 
     const handleSubmit = async() => {
-        const res = await postChamado(chamadoData)
-        
-        console.log(res)
-
-
+        const resCall = await postChamado(chamadoData)
+        setRes(!resCall)
     }
-
   
 
     const handleInputChange = (e,property) => { 
@@ -60,8 +57,8 @@ const AddChamado = ({setChamadoModal}) => {
                 <span>Observações:</span>
                 <input type="text" onChange={e=>handleInputChange(e,"observacoes")}/>
             </S.InputBox>      
-            <S.DoneButton onClick={handleSubmit} disabled={error}>Pronto</S.DoneButton>      
-            {error && <S.ErrorMsg>Informaçoẽs inválidas. Certifique a procedência do número do equipamento e do solicitante.</S.ErrorMsg> }  
+            <S.DoneButton onClick={handleSubmit} >Pronto</S.DoneButton>      
+            {res && <S.ErrorMsg>Informaçoẽs inválidas. Certifique a procedência do número do equipamento e do solicitante.</S.ErrorMsg> }  
         </S.Wrapper>
     )
 }
